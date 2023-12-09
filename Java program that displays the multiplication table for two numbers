@@ -1,0 +1,14 @@
+18.Display Multiplication table for 5 and 10 using various stages of life cycle of the thread by generating a suitable code in Java.
+Sample Input 5, 10
+5 X 1 = 5
+5 X 2 =10
+ ….
+10 X 1 =10
+10 X 2 = 20
+….
+Test Cases:
+1.10, 20
+2.-10, -30
+3.0, 0
+4.SIX, SIX
+5.9.8, 9.6
