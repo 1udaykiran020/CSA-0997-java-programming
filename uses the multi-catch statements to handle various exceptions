@@ -1,0 +1,34 @@
+public class MultiCatchExample {
+    public static void main(String[] args) {
+        try {
+            // ArithmeticException
+            int result = divide(10, 0);
+
+            // ArrayIndexOutOfBoundsException
+            int[] array = {1, 2, 3};
+            accessArrayElement(array, 5);
+
+            // NullPointerException
+            String str = null;
+            printStringLength(str);
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException | NullPointerException e) {
+            System.out.println("Caught Exception: " + e.getClass().getSimpleName());
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Caught Exception: " + e.getClass().getSimpleName());
+            e.printStackTrace();
+        }
+    }
+
+    private static int divide(int numerator, int denominator) {
+        return numerator / denominator;
+    }
+
+    private static int accessArrayElement(int[] array, int index) {
+        return array[index];
+    }
+
+    private static void printStringLength(String str) {
+        System.out.println("String Length: " + str.length());
+    }
+}
