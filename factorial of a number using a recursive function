@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class FactorialRecursive {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        // Calculate factorial using recursive function
+        long factorial = calculateFactorial(n);
+
+        // Output
+        System.out.println("The factorial of " + n + " is: " + factorial);
+
+        // Close the scanner to avoid resource leak
+        scanner.close();
+    }
+
+    // Recursive function to calculate factorial
+    private static long calculateFactorial(int n) {
+        if (n < 0) {
+            System.out.println("Factorial is not defined for negative numbers.");
+            System.exit(0);
+        }
+
+        // Base case: factorial of 0 is 1
+        if (n == 0) {
+            return 1;
+        } else {
+            // Recursive case: n! = n * (n-1)!
+            return n * calculateFactorial(n - 1);
+        }
+    }
+}
