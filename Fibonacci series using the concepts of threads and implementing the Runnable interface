@@ -1,0 +1,49 @@
+public class FibonacciRunnable implements Runnable {
+    private int n;
+
+    public FibonacciRunnable(int n) {
+        this.n = n;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Fibonacci series for n = " + n + ":");
+        int first = 0, second = 1;
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(first + " ");
+
+            int sum = first + second;
+            first = second;
+            second = sum;
+        }
+
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        generateFibonacciSeries(7);
+        generateFibonacciSeries(-10); // Negative number
+        generateFibonacciSeries(0);   // Zero
+        generateFibonacciSeries("EIGHT FIVE"); // Invalid input
+        generateFibonacciSeries(12.65); // Invalid input
+    }
+
+    public static void generateFibonacciSeries(int n) {
+        // Validate input
+        if (n <= 0) {
+            System.out.println("Invalid input. Please enter a positive integer.");
+            return;
+        }
+
+        // Create and start a new thread
+        Thread thread = new Thread(new FibonacciRunnable(n));
+        thread.start();
+    }
+
+    public static void generateFibonacciSeries(String input) {
+        // Invalid input
+        System.out.println("Invalid input. Please enter a positive integer.");
+    }
+}
