@@ -1,0 +1,43 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class Bank {
+    private static Map<String, Double> interestRates = new HashMap<>();
+
+    static {
+        // Initialize interest rates for different banks
+        interestRates.put("SBI", 8.4);
+        interestRates.put("ICICI", 7.3);
+        interestRates.put("AXIS", 9.7);
+    }
+
+    public static double getInterestRate(String bankName) {
+        return interestRates.getOrDefault(bankName, 0.0);
+    }
+}
+
+public class BankInterestDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the bank name and principal amount (e.g., SBI 8.4):");
+
+        while (scanner.hasNext()) {
+            String bankName = scanner.next();
+            if (bankName.equals("exit")) {
+                break; // Exit the loop if "exit" is entered
+            }
+            double principalAmount = scanner.nextDouble();
+
+            double interestRate = Bank.getInterestRate(bankName.toUpperCase());
+
+            if (interestRate == 0.0) {
+                System.out.println("Invalid bank name. Please enter SBI, ICICI, or AXIS.");
+            } else {
+                double interest = (principalAmount * interestRate) / 100;
+                System.out.println("Interest for " + bankName + " at the rate of " + interestRate + "%: " + interest);
+            }
+        }
+    }
+}
