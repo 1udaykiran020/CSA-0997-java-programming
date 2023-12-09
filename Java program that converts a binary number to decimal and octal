@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class BinaryConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input
+        System.out.print("Enter the binary number: ");
+        String binaryNumber = scanner.next();
+
+        // Validate binary input
+        if (!isValidBinary(binaryNumber)) {
+            System.out.println("Invalid binary number. Exiting program.");
+            return;
+        }
+
+        // Convert binary to decimal
+        int decimalNumber = binaryToDecimal(binaryNumber);
+
+        // Convert binary to octal
+        String octalNumber = binaryToOctal(binaryNumber);
+
+        // Output
+        System.out.println("Decimal Number: " + decimalNumber);
+        System.out.println("Octal: " + octalNumber);
+
+        // Close the scanner to avoid resource leak
+        scanner.close();
+    }
+
+    private static boolean isValidBinary(String binaryNumber) {
+        // Check if the input string consists only of 0s and 1s
+        return binaryNumber.matches("[01]+");
+    }
+
+    private static int binaryToDecimal(String binaryNumber) {
+        // Use Integer.parseInt with radix 2 to convert binary to decimal
+        return Integer.parseInt(binaryNumber, 2);
+    }
+
+    private static String binaryToOctal(String binaryNumber) {
+        // Convert binary to decimal first
+        int decimalNumber = binaryToDecimal(binaryNumber);
+        // Use Integer.toOctalString to convert decimal to octal
+        return Integer.toOctalString(decimalNumber);
+    }
+}
